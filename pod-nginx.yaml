@@ -15,9 +15,8 @@ spec:
    volumeMounts:
    - mountPath: /tmp/files
      name: app-storage 
-volumes:
-  - name: app-storage
-    hostPath:
-      # directory location on host
-      path: /tmp/files
-      type: DirectoryOrCreate
+ volumes:
+ - name: app-storage
+ hostPath:
+   path: /tmp/files
+   type: DirectoryOrCreate
