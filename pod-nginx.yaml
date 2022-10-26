@@ -12,3 +12,12 @@ spec:
    image: yanivomc/spring-music:latest
    ports: 
    - containerPort: 8080
+   volumeMounts:
+   - mountPath: /tmp/files
+     name: app-storage 
+volumes:
+  - name: app-storage
+    hostPath:
+      # directory location on host
+      path: /tmp/files
+      type: DirectoryOrCreate
