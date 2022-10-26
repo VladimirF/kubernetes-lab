@@ -8,7 +8,7 @@ spec:
    image: nginx:1.7.9 
    ports: 
    - containerPort: 80
- - name: springapp
-   image: yanivomc/spring-music:latest
+ - name: bear
+   image: supergiantkir/animals:bear
    ports: 
-   - containerPort: 8080
+   - containerPort: 80
