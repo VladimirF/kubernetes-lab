@@ -8,7 +8,7 @@ spec:
       app: nginx
   replicas: 2
   strategy:
-    type: blue/green
+    type: ramped
   template: 
     metadata:
       labels:
