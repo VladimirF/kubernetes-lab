@@ -18,7 +18,7 @@ spec:
         tier: frontend
     spec:
       nodeSelector:
-        ENV:FRONTEND
+        ENV: FRONTEND
       containers: 
       - name: nginx 
         image: nginx:1.7.9 
