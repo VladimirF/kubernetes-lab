@@ -6,7 +6,9 @@ spec:
   selector:
     matchLabels:
       app: nginx
-  replicas: 2 
+  replicas: 2
+  strategy:
+    type: blue/green
   template: 
     metadata:
       labels:
