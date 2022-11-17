@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: vladimir
+  labels:
+    k8s-app: aa
+spec:
+  selector:
+    matchLabels:
+      name: aa
+  template:
+    metadata:
+      labels:
+        name: aa
+    spec:
+      containers:
+      - name: alpine
+        image: alpine:latest
+        command:
+          - /bash/sh
+          - sleep 1000000
