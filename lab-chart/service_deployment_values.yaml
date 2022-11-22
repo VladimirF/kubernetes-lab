@@ -1,0 +1,51 @@
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: {{.Release.Name}}
+spec:
+  selector:
+    app: music
+  type: {{ .Values.type | default "NodePort"}}  #from values
+  ports:
+  - name: http
+    protocol: TCP
+    port: {{ .Values.port | default 80 }}
+    targetPort: {{ .Values.targetPort | default 8080 }}
+
+
+------------------------------
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }} #from RELEASE NAME
+spec:
+  selector:
+    matchLabels:
+      app: music
+  replicas: {{ .Values.replicaSets }}  #from values
+  template:
+    metadata:
+      labels:
+        app: music
+    spec:
+      containers:
+      - name: {{ .Values.name }}
+        image: {{.Values.image | default "yanivomc/spring-music:latest" }}
+        ports:
+        - containerPort: {{.Values.targetPort | default 8080}}
+
+
+-------------------------------
+
+
+dbname: "db_mysql"
+dbtable: "music"
+image: yanivomc/spring-music:latest
+tag: "latest"
+type: LoadBalancer
+port: 80
+targetPort: 8080
+replicaSets: 2
+name: "sprint-music"
